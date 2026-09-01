@@ -51,7 +51,7 @@ export function ProductReactionBar({
   }
 
   return (
-    <div ref={rootRef} className="product-reaction-bar">
+    <div ref={rootRef} className={`product-reaction-bar${compact ? " is-compact" : ""}`}>
       {pickerOpen ? (
         <div className="product-reaction-picker" role="menu" aria-label="Elegir reaccion">
           <button
@@ -73,36 +73,10 @@ export function ProductReactionBar({
         </div>
       ) : null}
 
-      <div className="product-reaction-row">
-        {total > 0 ? (
-          <div className="product-reaction-summary">
-            <div className="product-reaction-badges">
-              {visibleTypes.map((type) => (
-                <span
-                  key={type}
-                  className={`product-reaction-badge ${
-                    type === "like"
-                      ? "product-reaction-badge-like"
-                      : "product-reaction-badge-love"
-                  }`}
-                >
-                  {type === "like" ? (
-                    <ThumbsUp className="size-3 fill-current" strokeWidth={0} />
-                  ) : (
-                    <Heart className="size-3 fill-current" strokeWidth={0} />
-                  )}
-                </span>
-              ))}
-            </div>
-            <span className="product-reaction-count">{total}</span>
-          </div>
-        ) : null}
-
+      {compact ? (
         <button
           type="button"
-          className={`product-reaction-trigger ${compact ? "product-reaction-trigger-compact" : ""} ${
-            userReaction ? "is-active" : ""
-          } ${userReaction === "like" ? "is-like" : userReaction === "love" ? "is-love" : ""}`}
+          className="product-reaction-cluster"
           aria-label="Reaccionar al plato"
           aria-expanded={pickerOpen}
           onClick={(event) => {
@@ -110,15 +84,62 @@ export function ProductReactionBar({
             setPickerOpen((current) => !current);
           }}
         >
-          {userReaction === "love" ? (
-            <Heart className="size-4 fill-current" strokeWidth={0} />
-          ) : userReaction === "like" ? (
-            <ThumbsUp className="size-4 fill-current" strokeWidth={0} />
-          ) : (
-            <ThumbsUp className="size-4" strokeWidth={2} />
-          )}
+          <span className="product-reaction-badge product-reaction-badge-like">
+            <ThumbsUp className="size-3 fill-current" strokeWidth={0} />
+          </span>
+          <span className="product-reaction-badge product-reaction-badge-love">
+            <Heart className="size-3 fill-current" strokeWidth={0} />
+          </span>
+          {total > 0 ? <span className="product-reaction-count">{total}</span> : null}
         </button>
-      </div>
+      ) : (
+        <div className="product-reaction-row">
+          {total > 0 ? (
+            <div className="product-reaction-summary">
+              <div className="product-reaction-badges">
+                {visibleTypes.map((type) => (
+                  <span
+                    key={type}
+                    className={`product-reaction-badge ${
+                      type === "like"
+                        ? "product-reaction-badge-like"
+                        : "product-reaction-badge-love"
+                    }`}
+                  >
+                    {type === "like" ? (
+                      <ThumbsUp className="size-3 fill-current" strokeWidth={0} />
+                    ) : (
+                      <Heart className="size-3 fill-current" strokeWidth={0} />
+                    )}
+                  </span>
+                ))}
+              </div>
+              <span className="product-reaction-count">{total}</span>
+            </div>
+          ) : null}
+
+          <button
+            type="button"
+            className={`product-reaction-trigger ${
+              userReaction ? "is-active" : ""
+            } ${userReaction === "like" ? "is-like" : userReaction === "love" ? "is-love" : ""}`}
+            aria-label="Reaccionar al plato"
+            aria-expanded={pickerOpen}
+            onClick={(event) => {
+              event.stopPropagation();
+              setPickerOpen((current) => !current);
+            }}
+          >
+            {userReaction === "love" ? (
+              <Heart className="size-4 fill-current" strokeWidth={0} />
+            ) : userReaction === "like" ? (
+              <ThumbsUp className="size-4 fill-current" strokeWidth={0} />
+            ) : (
+              <ThumbsUp className="size-4" strokeWidth={2} />
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

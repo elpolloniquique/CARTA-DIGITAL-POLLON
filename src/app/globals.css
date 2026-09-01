@@ -111,14 +111,6 @@ body {
   color: rgba(255, 255, 255, 0.82);
 }
 
-.type-nav {
-  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-}
-
 .type-brand-mark {
   font-family: var(--font-display), Georgia, "Times New Roman", serif;
   font-size: 1.15rem;
@@ -282,7 +274,7 @@ img {
 .desktop-frame {
   position: relative;
   min-height: 100vh;
-  padding: 0 0 100px;
+  padding: 0;
 }
 
 .wide-top-nav {
@@ -317,10 +309,6 @@ img {
 
   .desktop-frame.dark-surface .mobile-shell {
     background: #111111;
-  }
-
-  .mobile-bottom-nav {
-    display: none;
   }
 
   .wide-top-nav {
@@ -833,9 +821,18 @@ img {
   background: rgba(239, 43, 45, 0.03);
 }
 
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .product-reaction-bar {
   position: relative;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  height: 2rem;
 }
 
 .product-reaction-row {
@@ -869,7 +866,27 @@ img {
 }
 
 .product-reaction-badge + .product-reaction-badge {
-  margin-left: -0.35rem;
+  margin-left: -0.42rem;
+}
+
+.product-reaction-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.product-reaction-cluster .product-reaction-badge {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.product-reaction-cluster .product-reaction-badge + .product-reaction-badge {
+  margin-left: -0.48rem;
 }
 
 .product-reaction-badge-like {
@@ -906,8 +923,8 @@ img {
 }
 
 .product-reaction-trigger-compact {
-  width: 1.85rem;
-  height: 1.85rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .product-reaction-trigger:hover {
@@ -980,7 +997,3 @@ img {
   background: var(--brand-red);
 }
 
-.product-card {
-  display: flex;
-  flex-direction: column;
-}

@@ -34,22 +34,19 @@ export function ProductCard({
       <button
         type="button"
         onClick={() => onOpen(product)}
-        className="block w-full text-left"
+        className="block min-h-0 w-full flex-1 text-left"
         aria-label={`Ver ${product.name}`}
       >
-        <div className="relative">
+        <div>
           <img
             src={product.imageUrl}
             alt={product.name}
             className="h-32 w-full object-cover md:h-40"
           />
-          <span className="type-kicker is-light absolute left-2 top-2 rounded-full bg-[var(--brand-red)] px-2 py-1 text-[0.58rem] text-white">
-            {product.tag?.toUpperCase() ?? "Oferta"}
-          </span>
         </div>
 
         <p
-          className={`type-product line-clamp-3 min-h-[2.7rem] px-3 pt-2 text-center ${
+          className={`type-product line-clamp-2 min-h-[2.45rem] px-2.5 pt-2 text-left leading-[1.25] ${
             isDark ? "text-white" : "text-[var(--text-ink)]"
           }`}
         >
@@ -57,7 +54,7 @@ export function ProductCard({
         </p>
       </button>
 
-      <div className="flex items-center justify-between gap-2 px-3 pb-3 pt-1">
+      <div className="mt-auto flex items-center justify-between gap-3 px-2.5 pb-2.5 pt-1.5">
         <ProductReactionBar
           productId={product.id}
           counts={counts}
@@ -69,7 +66,7 @@ export function ProductCard({
         <button
           type="button"
           onClick={() => onOpen(product)}
-          className="type-price shrink-0 rounded-[0.7rem] bg-brand-gradient px-3.5 py-1.5 text-[0.88rem] text-white md:px-4 md:text-[0.95rem]"
+          className="type-price inline-flex h-8 shrink-0 items-center justify-center rounded-lg bg-brand-gradient px-2.5 text-[0.78rem] text-white md:h-9 md:px-3 md:text-[0.88rem]"
         >
           {formatCurrency(product.price)}
         </button>

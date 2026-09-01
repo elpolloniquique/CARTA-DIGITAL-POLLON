@@ -23,7 +23,6 @@ import {
   Plus,
   Search,
   Star,
-  Store,
   Sun,
   SunMedium,
   ThumbsUp,
@@ -516,7 +515,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
           </div>
         </nav>
 
-        <div className="desktop-content-wrap pb-16 pt-0 md:px-0 md:pb-10 md:pt-0">
+        <div className="desktop-content-wrap pb-8 pt-0 md:px-0 md:pb-10 md:pt-0">
           <header
             className={`mobile-top-bar sticky top-0 z-30 md:hidden ${
               isDark ? "mobile-top-bar-dark" : "mobile-top-bar-light"
@@ -834,63 +833,6 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
           </div>
         </div>
 
-        <nav
-          className={`mobile-bottom-nav fixed bottom-0 left-1/2 z-40 flex w-full max-w-[430px] -translate-x-1/2 items-end justify-around border-t px-4 pt-1 pb-[max(0.2rem,env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden ${
-            isDark
-              ? "border-white/10 bg-black/90"
-              : "border-black/10 bg-white/92"
-          }`}
-        >
-          <button
-            type="button"
-            onClick={() => {
-              setCategoryScreenOpen(false);
-              setDrawerOpen(false);
-              setSearch("");
-              setShowFavoritesOnly(false);
-              setGlobalSearchOpen(false);
-              setGlobalSearchQuery("");
-              setActiveCategory("todo-menu");
-            }}
-            className="type-nav flex flex-1 flex-col items-center gap-px py-0 text-[var(--brand-red)]"
-          >
-            <Home className="size-3" strokeWidth={2.2} />
-            Inicio
-          </button>
-          <button
-            type="button"
-            onClick={() => setDrawerOpen(true)}
-            className={`type-nav flex flex-1 flex-col items-center gap-px py-0 ${isDark ? "text-white/75" : "text-neutral-600"}`}
-          >
-            <Store className="size-3" strokeWidth={2.2} />
-            Menu
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setShowFavoritesOnly((current) => {
-                const next = !current;
-                setActiveCategory("todo-menu");
-                setCategoryScreenOpen(next);
-                setCategorySearchOpen(false);
-                setSearch("");
-                return next;
-              });
-            }}
-            className={`type-nav flex flex-1 flex-col items-center gap-px py-0 ${
-              showFavoritesOnly ? "text-[var(--brand-red)]" : isDark ? "text-white/75" : "text-neutral-600"
-            }`}
-          >
-            <Heart
-              className={`size-3 ${
-                showFavoritesOnly ? "fill-[var(--brand-red)] text-[var(--brand-red)]" : ""
-              }`}
-              strokeWidth={2.2}
-            />
-            Favoritos
-          </button>
-        </nav>
-
         <div
           className={`fixed inset-0 z-50 bg-black/50 transition ${
             drawerOpen || globalSearchOpen
@@ -1115,7 +1057,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
 
         {categoryScreenOpen ? (
           <div
-            className={`wide-category-panel fixed inset-x-0 top-0 z-[45] mx-auto flex h-[calc(100dvh-74px)] w-full max-w-[430px] flex-col overflow-hidden md:inset-0 md:h-auto md:max-w-none md:bg-black/45 md:backdrop-blur-sm ${
+            className={`wide-category-panel fixed inset-x-0 top-0 z-[45] mx-auto flex h-[100dvh] w-full max-w-[430px] flex-col overflow-hidden md:inset-0 md:h-auto md:max-w-none md:bg-black/45 md:backdrop-blur-sm ${
               isDark ? "bg-[#111111]" : "bg-white"
             }`}
             onClick={closeCategoryScreen}
@@ -1126,12 +1068,12 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
               }`}
               onClick={(event) => event.stopPropagation()}
             >
-            <div className="bg-brand-gradient px-4 pb-4 pt-5 text-white shadow-lg md:rounded-t-xl">
-              <div className="flex items-center justify-between gap-3">
+            <div className="bg-brand-gradient px-3 py-2 text-white shadow-lg md:rounded-t-xl">
+              <div className="flex items-center justify-between gap-2">
                 <button
                   type="button"
                   onClick={closeCategoryScreen}
-                  className="flex size-10 items-center justify-center rounded-full bg-white/12"
+                  className="flex size-9 items-center justify-center rounded-full bg-white/12"
                   aria-label="Cerrar categoria"
                 >
                   <ArrowLeft className="size-5" />
@@ -1144,18 +1086,18 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 <button
                   type="button"
                   onClick={() => setCategorySearchOpen((current) => !current)}
-                  className="flex size-10 items-center justify-center rounded-full bg-white/12"
+                  className="flex size-9 items-center justify-center rounded-full bg-white/12"
                   aria-label="Buscar en la categoria"
                 >
                   <Search className="size-5" />
                 </button>
               </div>
 
-              <p className="type-muted is-light mt-3 text-center">{activeDescription}</p>
+              <p className="type-muted is-light mt-0.5 text-center">{activeDescription}</p>
 
               {categorySearchOpen ? (
-                <div className="mt-4">
-                  <label className="flex items-center gap-3 rounded-full bg-white px-4 py-3 text-neutral-900">
+                <div className="mt-2">
+                  <label className="flex items-center gap-3 rounded-full bg-white px-4 py-2 text-neutral-900">
                     <Search className="size-4 text-neutral-500" />
                     <input
                       value={search}
