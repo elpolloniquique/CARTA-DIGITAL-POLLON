@@ -194,7 +194,7 @@ export function DashboardView({ products }: DashboardViewProps) {
           return (
             <div
               key={card.label}
-              className="rounded-2xl border border-black/8 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.06)]"
+              className="rounded-xl border border-black/8 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.06)]"
             >
               <div className="flex items-start justify-between">
                 <div>
@@ -214,7 +214,7 @@ export function DashboardView({ products }: DashboardViewProps) {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-2">
-        <div className="rounded-2xl border border-black/8 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
+        <div className="rounded-xl border border-black/8 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
           <h2 className="text-lg font-black text-[#111]">Visitas por dia</h2>
           <p className="mt-1 text-sm text-neutral-500">Evolucion semanal de la carta digital</p>
           <div className="mt-6">
@@ -229,7 +229,7 @@ export function DashboardView({ products }: DashboardViewProps) {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-black/8 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
+        <div className="rounded-xl border border-black/8 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
           <h2 className="text-lg font-black text-[#111]">Visitas por hora</h2>
           <p className="mt-1 text-sm text-neutral-500">Horarios con mas trafico (8:00 - 23:00)</p>
           <div className="mt-6">
@@ -243,7 +243,7 @@ export function DashboardView({ products }: DashboardViewProps) {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-black/8 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
+      <div className="rounded-xl border border-black/8 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
         <div className="mb-5 flex items-center justify-between gap-3">
           <div>
             <h2 className="text-lg font-black text-[#111]">Platos favoritos de los clientes</h2>

@@ -1,27 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9f8e8;
+  --background: #ffffff;
   --foreground: #111111;
-  --surface-cream: #f9f8e8;
-  --surface-cream-deep: #f3f2e4;
+  --surface-cream: #ffffff;
+  --surface-cream-deep: #ffffff;
   --brand-red: #ef2b2d;
   --brand-red-deep: #c71316;
   --brand-ink: #171717;
   --brand-gold: #f8c250;
   --brand-card: #ffffff;
   --brand-muted: #767676;
-  --brand-line: #ece7df;
+  --brand-line: #e5e5e5;
+  --card-border: #e5e5e5;
   --brand-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
-  --font-body: "Inter", sans-serif;
-  --font-display: "Cormorant Garamond", serif;
-  --pollon-watermark: url("/brand/watermark-pattern.svg");
+  --text-ink: #171717;
+  --text-body: #3f3f46;
+  --text-muted: #71717a;
+  --pollon-watermark: none;
 }
 
 .light-surface {
-  background-color: var(--surface-cream);
-  background-image: var(--pollon-watermark);
-  background-size: 240px 170px;
+  background-color: #ffffff;
+  background-image: none;
 }
 
 * {
@@ -35,11 +36,95 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--surface-cream);
-  background-image: var(--pollon-watermark);
-  background-size: 240px 170px;
-  color: var(--foreground);
-  font-family: var(--font-body);
+  background-color: #ffffff;
+  background-image: none;
+  color: var(--text-ink);
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.type-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.type-section {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 3.2vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.type-kicker {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+}
+
+.type-kicker.is-light {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.type-product {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.type-price {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.type-body {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+.type-muted {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.type-muted.is-light {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.type-nav {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.type-brand-mark {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 a {
@@ -97,7 +182,7 @@ img {
   }
 
   .mobile-top-bar-light {
-    background: rgba(249, 248, 232, 0.97);
+    background: #ffffff;
   }
 
   .mobile-top-bar-dark {
@@ -106,11 +191,11 @@ img {
   }
 
   .mobile-header-title {
-    font-family: var(--font-category), var(--font-body), sans-serif;
-    font-size: 0.98rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-family: var(--font-display), Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: none;
   }
 
   .mobile-header-icon-btn {
@@ -133,16 +218,16 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
+    width: 2.15rem;
     height: 2.15rem;
-    padding: 0 0.7rem 0 0.55rem;
+    padding: 0;
     border: none;
     border-radius: 9999px;
-    background: linear-gradient(135deg, #fdba74 0%, #f97316 45%, #ea580c 100%);
+    background: var(--brand-red);
     color: #ffffff;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      0 4px 14px rgba(234, 88, 12, 0.38);
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 4px 12px rgba(239, 43, 45, 0.38);
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
@@ -153,14 +238,6 @@ img {
 
   .mobile-theme-toggle-icon {
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22));
-  }
-
-  .mobile-theme-toggle-label {
-    font-family: var(--font-category), var(--font-body), sans-serif;
-    font-size: 0.58rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
   }
 
   .mobile-hero-edge {
@@ -219,9 +296,8 @@ img {
   }
 
   .desktop-frame:not(.dark-surface) {
-    background-color: var(--surface-cream);
-    background-image: var(--pollon-watermark);
-    background-size: 240px 170px;
+    background-color: #ffffff;
+    background-image: none;
   }
 
   .desktop-frame.dark-surface {
@@ -333,7 +409,7 @@ img {
   .wide-category-panel-inner {
     width: min(100%, 1180px);
     max-height: calc(100vh - 3rem);
-    border-radius: 2rem;
+    border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
   }
@@ -375,7 +451,7 @@ img {
 }
 
 .font-category {
-  font-family: var(--font-category), var(--font-body), sans-serif;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -385,26 +461,26 @@ img {
 }
 
 .menu-drawer-logo-brand {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
   line-height: 1;
   color: var(--brand-red);
 }
 
 .menu-drawer-logo-tagline {
-  margin-top: 0.18rem;
-  font-family: var(--font-category), var(--font-body), sans-serif;
-  font-size: 0.38rem;
-  font-weight: 800;
-  letter-spacing: 0.22em;
+  margin-top: 0.22rem;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #666666;
 }
 
 .menu-drawer-phone-card {
   border: 1px solid #e8e8e8;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   background: #ffffff;
   padding: 0.85rem 1rem;
   text-decoration: none;
@@ -417,12 +493,12 @@ img {
 }
 
 .menu-drawer-categories-label {
-  font-family: var(--font-category), var(--font-body), sans-serif;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #9ca3af;
+  color: #8a8a8a;
 }
 
 .menu-drawer-category-item {
@@ -433,12 +509,12 @@ img {
   background: transparent;
   padding: 0.72rem 0.85rem;
   text-align: left;
-  font-family: var(--font-display);
-  font-size: 1.08rem;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
-  color: #111111;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #171717;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
@@ -450,9 +526,7 @@ img {
 .menu-drawer-category-item.is-active {
   background: var(--brand-red);
   color: #ffffff;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .menu-drawer-delivery-link {
@@ -460,7 +534,7 @@ img {
   align-items: center;
   gap: 0.85rem;
   border: 1px solid #e8e8e8;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   background: #ffffff;
   padding: 0.85rem 1rem;
   text-decoration: none;
@@ -473,12 +547,11 @@ img {
 }
 
 .menu-drawer-delivery-title {
-  font-family: var(--font-category), var(--font-body), sans-serif;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
   font-size: 0.88rem;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #111111;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #171717;
 }
 
 @media (min-width: 768px) {
@@ -492,8 +565,10 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-weight: 800;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
   font-size: 1.35rem;
+  letter-spacing: -0.02em;
   color: var(--brand-red);
 }
 
@@ -513,9 +588,7 @@ img {
 }
 
 .product-card-shadow {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 12px 32px rgba(15, 23, 42, 0.12);
+  box-shadow: none;
 }
 
 .bg-brand-gradient {
@@ -532,7 +605,7 @@ img {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 0.95rem;
+  border-radius: 0.75rem;
   backdrop-filter: blur(8px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
@@ -574,12 +647,11 @@ img {
 .hero-category-label-line {
   display: block;
   width: 100%;
-  font-family: var(--font-category), var(--font-body), sans-serif;
-  font-size: 0.58rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
   text-wrap: balance;
   color: #ffffff;
   text-shadow:
@@ -599,8 +671,8 @@ img {
 }
 
 .hero-category-btn-mobile .hero-category-label-line {
-  font-size: 0.56rem;
-  letter-spacing: 0.025em;
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
 }
 
 .hero-category-btn-wide {
@@ -621,8 +693,8 @@ img {
   }
 
   .hero-category-label-line {
-    font-size: 0.6rem;
-    letter-spacing: 0.035em;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -634,7 +706,7 @@ img {
 
   .hero-category-btn-wide {
     min-height: 5rem;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
   }
 
   .hero-category-icon {
@@ -643,8 +715,8 @@ img {
   }
 
   .hero-category-label-line {
-    font-size: 0.64rem;
-    letter-spacing: 0.04em;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -677,17 +749,16 @@ img {
 }
 
 .hero-all-menu-label {
-  font-family: var(--font-category), var(--font-body), sans-serif;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
   font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 @media (min-width: 768px) {
   .hero-all-menu-label {
-    font-size: 0.88rem;
-    letter-spacing: 0.14em;
+    font-size: 0.84rem;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -697,8 +768,8 @@ img {
   }
 
   .hero-all-menu-label {
-    font-size: 0.95rem;
-    letter-spacing: 0.16em;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -812,10 +883,12 @@ img {
 }
 
 .product-reaction-count {
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
   line-height: 1;
-  color: #4b5563;
+  color: #52525b;
+  font-variant-numeric: tabular-nums;
 }
 
 .product-reaction-trigger {

@@ -112,7 +112,7 @@ export function AdminShell({
               <h1 className="text-[2rem] font-black tracking-tight text-[#111]">{meta.title}</h1>
               <p className="mt-1 text-sm text-neutral-600">{meta.subtitle}</p>
             </div>
-            <div className="hidden items-center gap-2 rounded-2xl border border-black/8 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 shadow-sm md:flex">
+            <div className="hidden items-center gap-2 rounded-xl border border-black/8 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 shadow-sm md:flex">
               <BarChart3 className="size-4 text-[#ef2b2d]" />
               Carta digital en vivo
             </div>

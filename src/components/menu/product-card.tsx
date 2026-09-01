@@ -25,10 +25,10 @@ export function ProductCard({
 }: ProductCardProps) {
   return (
     <article
-      className={`product-card overflow-hidden rounded-[1.55rem] border shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${
+      className={`product-card overflow-hidden rounded-xl border ${
         isDark
           ? "border-white/10 bg-[#1b1b1b] text-white"
-          : "border-black/10 bg-white text-neutral-900"
+          : "border-[#e5e5e5] bg-white text-neutral-900"
       }`}
     >
       <button
@@ -43,14 +43,14 @@ export function ProductCard({
             alt={product.name}
             className="h-32 w-full object-cover md:h-40"
           />
-          <span className="absolute left-2 top-2 rounded-full bg-[var(--brand-red)] px-2 py-1 text-[0.55rem] font-black uppercase tracking-[0.15em] text-white">
+          <span className="type-kicker is-light absolute left-2 top-2 rounded-full bg-[var(--brand-red)] px-2 py-1 text-[0.58rem] text-white">
             {product.tag?.toUpperCase() ?? "Oferta"}
           </span>
         </div>
 
         <p
-          className={`line-clamp-3 min-h-[2.7rem] px-3 pt-2 text-center text-[0.95rem] font-medium leading-5 ${
-            isDark ? "text-white" : "text-neutral-900"
+          className={`type-product line-clamp-3 min-h-[2.7rem] px-3 pt-2 text-center ${
+            isDark ? "text-white" : "text-[var(--text-ink)]"
           }`}
         >
           {product.name}
@@ -69,7 +69,7 @@ export function ProductCard({
         <button
           type="button"
           onClick={() => onOpen(product)}
-          className="shrink-0 rounded-[0.7rem] bg-brand-gradient px-3.5 py-1.5 text-[0.92rem] font-black text-white shadow-sm md:px-4 md:text-[1.02rem]"
+          className="type-price shrink-0 rounded-[0.7rem] bg-brand-gradient px-3.5 py-1.5 text-[0.88rem] text-white md:px-4 md:text-[0.95rem]"
         >
           {formatCurrency(product.price)}
         </button>

@@ -47,7 +47,7 @@ export function SettingsView({
         </button>
       </div>
 
-      <section className="rounded-2xl border border-black/8 bg-white p-6 shadow-sm">
+      <section className="rounded-xl border border-black/8 bg-white p-6 shadow-sm">
         <h2 className="text-lg font-black text-[#111]">Imagenes de la carta</h2>
         <p className="mt-1 text-sm text-neutral-500">
           Foto de fondo del inicio y logotipo visibles en la carta publica
@@ -73,7 +73,7 @@ export function SettingsView({
       </section>
 
       <div className="grid gap-6 xl:grid-cols-2">
-        <section className="rounded-2xl border border-black/8 bg-white p-6 shadow-sm">
+        <section className="rounded-xl border border-black/8 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-black text-[#111]">Header de la carta</h2>
           <p className="mt-1 text-sm text-neutral-500">
             Titulo, subtitulo y datos visibles en la parte superior
@@ -101,7 +101,7 @@ export function SettingsView({
           </div>
         </section>
 
-        <section className="rounded-2xl border border-black/8 bg-white p-6 shadow-sm">
+        <section className="rounded-xl border border-black/8 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-black text-[#111]">Footer y contacto</h2>
           <p className="mt-1 text-sm text-neutral-500">
             Enlaces, direccion y horarios del pie de pagina
@@ -128,9 +128,9 @@ export function SettingsView({
         </section>
       </div>
 
-      <section className="rounded-2xl border border-black/8 bg-white p-6 shadow-sm">
+      <section className="rounded-xl border border-black/8 bg-white p-6 shadow-sm">
         <h2 className="text-lg font-black text-[#111]">Vista previa rapida</h2>
-        <div className="mt-4 overflow-hidden rounded-2xl border border-black/8">
+        <div className="mt-4 overflow-hidden rounded-xl border border-black/8">
           {settings.heroBackgroundUrl ? (
             <div className="relative h-44">
               <img

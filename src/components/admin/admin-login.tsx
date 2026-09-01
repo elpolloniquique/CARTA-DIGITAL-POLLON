@@ -35,7 +35,7 @@ export function AdminLogin({
         </div>
 
         {!isConfigured ? (
-          <div className="mb-4 rounded-2xl border border-amber-400/30 bg-amber-500/10 p-4 text-sm leading-7 text-amber-100">
+          <div className="mb-4 rounded-xl border border-amber-400/30 bg-amber-500/10 p-4 text-sm leading-7 text-amber-100">
             {typeof window !== "undefined" && window.location.hostname.includes("vercel.app") ? (
               <>
                 Faltan las variables de Supabase en <strong>Vercel</strong>. Ve a tu proyecto →{" "}
@@ -54,7 +54,7 @@ export function AdminLogin({
 
         <form
           onSubmit={onSubmit}
-          className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 text-white backdrop-blur"
+          className="rounded-xl border border-white/10 bg-white/5 p-6 text-white backdrop-blur"
         >
           <div className="space-y-4">
             <label className="block">

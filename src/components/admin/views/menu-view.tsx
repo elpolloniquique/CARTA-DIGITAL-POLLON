@@ -167,7 +167,7 @@ export function MenuView({
 
       {tab === "products" ? (
         <>
-          <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-black/8 bg-white p-4 shadow-sm">
+          <div className="flex flex-wrap items-center gap-3 rounded-xl border border-black/8 bg-white p-4 shadow-sm">
             <select
               value={categoryFilter}
               onChange={(event) => setCategoryFilter(event.target.value)}
@@ -202,7 +202,7 @@ export function MenuView({
             </select>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-black/8 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
+          <div className="overflow-hidden rounded-xl border border-black/8 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.06)]">
             <div className="overflow-x-auto">
               <table className="admin-table w-full min-w-[960px]">
                 <thead>
@@ -303,7 +303,7 @@ export function MenuView({
         <div className="grid gap-6 xl:grid-cols-[360px_1fr]">
           <form
             onSubmit={(event) => void handleCategorySubmit(event)}
-            className="rounded-2xl border border-black/8 bg-white p-5 shadow-sm"
+            className="rounded-xl border border-black/8 bg-white p-5 shadow-sm"
           >
             <h3 className="text-lg font-black text-[#111]">
               {categoryForm.id ? "Editar categoria" : "Nueva categoria"}
@@ -392,7 +392,7 @@ export function MenuView({
             </div>
           </form>
 
-          <div className="rounded-2xl border border-black/8 bg-white p-5 shadow-sm">
+          <div className="rounded-xl border border-black/8 bg-white p-5 shadow-sm">
             <h3 className="text-lg font-black text-[#111]">Categorias registradas</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {categories.map((category) => (

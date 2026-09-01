@@ -45,7 +45,7 @@ export function ProductEditModal({
 
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/50 p-4">
-      <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl">
+      <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white shadow-2xl">
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/8 bg-white px-6 py-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-500">
@@ -137,7 +137,7 @@ export function ProductEditModal({
             </label>
           </div>
 
-          <div className="rounded-2xl border border-black/8 bg-neutral-50 p-4">
+          <div className="rounded-xl border border-black/8 bg-neutral-50 p-4">
             <p className="text-sm font-bold text-[#111]">Imagen del plato</p>
             {form.imageUrl ? (
               <div className="relative mt-3 inline-block">

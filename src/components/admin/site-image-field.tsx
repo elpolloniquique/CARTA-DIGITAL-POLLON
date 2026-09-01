@@ -45,7 +45,7 @@ export function SiteImageField({
   }
 
   return (
-    <div className="rounded-2xl border border-black/8 bg-neutral-50 p-4">
+    <div className="rounded-xl border border-black/8 bg-neutral-50 p-4">
       <div className="mb-3">
         <p className="text-sm font-semibold text-neutral-700">{label}</p>
         <p className="mt-1 text-xs text-neutral-500">{description}</p>

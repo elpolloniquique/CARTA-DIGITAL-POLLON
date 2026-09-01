@@ -1,23 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, Montserrat } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 
-const bodyFont = Inter({
+const bodyFont = DM_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
 });
 
-const displayFont = Cormorant_Garamond({
+const displayFont = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
+  style: ["normal"],
   variable: "--font-display",
-});
-
-const categoryFont = Montserrat({
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  variable: "--font-category",
 });
 
 export const metadata: Metadata = {
@@ -31,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${bodyFont.variable} ${displayFont.variable} ${categoryFont.variable}`}>{children}</body>
+    <html lang="es" className={`${bodyFont.variable} ${displayFont.variable}`}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

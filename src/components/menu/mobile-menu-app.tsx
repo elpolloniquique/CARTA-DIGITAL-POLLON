@@ -433,7 +433,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
         className={`mobile-shell transition-colors ${
           isDark
             ? "border-white/10 bg-gradient-to-b from-[#0f0f0f] to-[#171717] text-white shadow-none md:border-none md:bg-[#111] md:from-[#111] md:to-[#111]"
-            : "light-surface border-black/10 text-neutral-900 shadow-none md:border-none"
+            : "light-surface border-[#e5e5e5] text-neutral-900 shadow-none md:border-none"
         }`}
       >
         <nav
@@ -454,7 +454,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
             <Menu className="size-5" />
           </button>
 
-          <p className="shrink-0 text-[1.35rem] font-black uppercase tracking-[0.04em] lg:text-[1.55rem]">
+          <p className="type-brand-mark shrink-0 lg:text-[1.35rem]">
             <BrandLogo
               logoUrl={logoUrl}
               alt={restaurantName}
@@ -464,10 +464,10 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
           </p>
 
           <div className="hidden min-w-0 flex-1 flex-col items-center text-center sm:flex">
-            <p className="text-[1.05rem] font-black uppercase tracking-[0.08em] lg:text-[1.15rem]">
+            <p className="type-brand-mark text-[1.2rem] lg:text-[1.35rem]">
               Carta <span className="text-[var(--brand-red)]">Digital</span>
             </p>
-            <p className="mt-0.5 text-[0.62rem] font-black uppercase tracking-[0.28em] lg:text-[0.68rem]">
+            <p className="type-kicker mt-1">
               <span className="text-[var(--brand-red)]">{locationCity}</span>
               <span className={isDark ? "text-white/70" : "text-neutral-800"}> · {locationCountry}</span>
             </p>
@@ -508,28 +508,15 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
             <button
               type="button"
               onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-              className={`inline-flex h-11 items-center gap-2 rounded-full border px-3 ${
-                isDark
-                  ? "border-white/15 bg-white/5 text-white"
-                  : "border-amber-200 bg-amber-50 text-neutral-900"
-              }`}
+              className="inline-flex size-11 items-center justify-center rounded-full bg-[var(--brand-red)] text-white shadow-[0_4px_12px_rgba(239,43,45,0.35)]"
               aria-label="Cambiar tema"
             >
-              <span className="text-[0.62rem] font-black uppercase tracking-[0.18em]">
-                {isDark ? "Night" : "Day"}
-              </span>
-              <span
-                className={`flex size-6 items-center justify-center rounded-full ${
-                  isDark ? "bg-[var(--brand-red)] text-white" : "bg-amber-400 text-white"
-                }`}
-              >
-                {isDark ? <MoonStar className="size-3.5" /> : <SunMedium className="size-3.5" />}
-              </span>
+              {isDark ? <MoonStar className="size-5" /> : <SunMedium className="size-5" />}
             </button>
           </div>
         </nav>
 
-        <div className="desktop-content-wrap pb-28 pt-0 md:px-0 md:pb-10 md:pt-0">
+        <div className="desktop-content-wrap pb-16 pt-0 md:px-0 md:pb-10 md:pt-0">
           <header
             className={`mobile-top-bar sticky top-0 z-30 md:hidden ${
               isDark ? "mobile-top-bar-dark" : "mobile-top-bar-light"
@@ -549,7 +536,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 <div
                   className={`mobile-header-title ${isDark ? "text-white" : "text-neutral-900"}`}
                 >
-                  CARTA <span className="text-[var(--brand-red)]">DIGITAL</span>
+                  Carta <span className="text-[var(--brand-red)]">Digital</span>
                 </div>
               </div>
 
@@ -574,7 +561,6 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                   ) : (
                     <Sun className="mobile-theme-toggle-icon size-[1.15rem] fill-white/95 text-white" strokeWidth={1.75} />
                   )}
-                  <span className="mobile-theme-toggle-label">{isDark ? "Night" : "Day"}</span>
                 </button>
               </div>
             </div>
@@ -589,11 +575,11 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/35 to-black/70" />
 
             <div className="absolute inset-x-0 top-0 p-5 text-center text-white md:inset-x-auto md:left-10 md:top-10 md:p-0 md:text-left lg:left-14 lg:top-12">
-              <div className="hero-brand-badge mx-auto max-w-[220px] rounded-full px-4 py-2 md:mx-0 md:max-w-none md:rounded-[1.75rem] md:px-8 md:py-6">
-                <p className="font-[var(--font-display)] text-[2rem] font-bold leading-none text-[var(--brand-red)] md:text-[2.75rem] lg:text-[3rem]">
+              <div className="hero-brand-badge mx-auto max-w-[220px] rounded-xl px-4 py-2 md:mx-0 md:max-w-none md:px-8 md:py-6">
+                <p className="type-display text-[2rem] text-[var(--brand-red)] md:text-[2.75rem] lg:text-[3.1rem]">
                   {restaurantName}
                 </p>
-                <p className="mt-1 text-[0.62rem] font-black uppercase tracking-[0.24em] text-white/90 md:mt-2 md:text-[0.7rem] md:tracking-[0.22em]">
+                <p className="type-kicker is-light mt-1.5 md:mt-2">
                   Pollo a la brasa · {locationCity}, {locationCountry}
                 </p>
               </div>
@@ -669,9 +655,9 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
           <div className="mobile-content-pad px-3 md:px-0">
           <section className="mt-6 md:mt-10">
             <div
-              className={`mb-4 text-[2rem] font-black uppercase tracking-tight md:mb-5 md:text-[2.35rem] ${isDark ? "text-white" : "text-neutral-900"}`}
+              className={`type-section mb-4 md:mb-5 ${isDark ? "text-white" : "text-[var(--text-ink)]"}`}
             >
-              EXPLORE
+              Explorar
             </div>
 
             <div className="desktop-explore-grid space-y-4 px-0.5 md:space-y-0">
@@ -693,10 +679,10 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                     key={`explore-${category.id}`}
                     type="button"
                     onClick={() => openCategory(category.slug, true)}
-                    className={`product-card-shadow mx-auto block w-full overflow-hidden rounded-[2rem] border text-left transition md:rounded-[1.75rem] md:hover:-translate-y-1 md:hover:shadow-[0_24px_48px_rgba(15,23,42,0.18)] ${
+                    className={`mx-auto block w-full overflow-hidden rounded-xl border text-left transition ${
                       isDark
-                        ? "border-white/10 bg-white/5 md:border-none"
-                        : "border-black/8 bg-white md:border-none"
+                        ? "border-white/10 bg-white/5"
+                        : "border-[#e5e5e5] bg-white"
                     }`}
                   >
                     <div className="relative">
@@ -705,19 +691,19 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                         alt={currentProduct.name}
                         className="h-[230px] w-full object-cover md:h-[320px] lg:h-[360px]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-white md:p-5 lg:p-6">
                         <div className="mb-2 flex items-center gap-2">
                           <Icon className="size-5 text-white md:size-[1.35rem]" />
-                          <p className="text-[1.05rem] font-black uppercase tracking-[0.08em] md:text-[0.95rem] md:tracking-[0.12em]">
+                          <p className="type-kicker is-light">
                             {category.name}
                           </p>
                         </div>
-                        <p className="line-clamp-2 text-[1.2rem] font-semibold leading-6 md:text-[1.35rem] md:leading-7 lg:text-[1.45rem]">
+                        <p className="type-display line-clamp-2 text-[1.25rem] leading-snug text-white md:text-[1.45rem]">
                           {currentProduct.name}
                         </p>
                         <div className="mt-3 flex items-center justify-between md:mt-4">
-                          <span className="rounded-full bg-white px-3 py-1 text-sm font-black text-[var(--brand-red)] md:px-4 md:py-1.5 md:text-[0.95rem]">
+                          <span className="type-price rounded-full bg-white px-3 py-1 text-[0.88rem] text-[var(--brand-red)] md:px-4 md:py-1.5 md:text-[0.95rem]">
                             {formatCurrency(currentProduct.price)}
                           </span>
                         </div>
@@ -733,11 +719,11 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
             <section className="mt-8 md:mt-10">
               <div className="mb-4 flex items-center justify-between">
                 <div
-                  className={`text-[1.55rem] font-black uppercase tracking-tight md:text-[2rem] ${isDark ? "text-white" : "text-neutral-900"}`}
+                  className={`type-section ${isDark ? "text-white" : "text-[var(--text-ink)]"}`}
                 >
                   Favoritos de clientes
                 </div>
-                <span className="rounded-full bg-[var(--brand-red)]/10 px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.14em] text-[var(--brand-red)]">
+                <span className="type-kicker rounded-full bg-[var(--brand-red)]/10 px-3 py-1">
                   En vivo
                 </span>
               </div>
@@ -748,10 +734,10 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                     key={`top-like-${product.id}`}
                     type="button"
                     onClick={() => setSelectedProduct(product)}
-                    className={`flex w-full items-center gap-3 overflow-hidden rounded-[1.4rem] border p-3 text-left ${
+                    className={`flex w-full items-center gap-3 overflow-hidden rounded-xl border p-3 text-left ${
                       isDark
                         ? "border-white/10 bg-white/5"
-                        : "border-black/8 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.08)]"
+                        : "border-[#e5e5e5] bg-white"
                     }`}
                   >
                     <img
@@ -760,8 +746,8 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                       className="size-16 rounded-xl object-cover"
                     />
                     <div className="min-w-0 flex-1">
-                      <p className="line-clamp-2 text-sm font-bold leading-5">{product.name}</p>
-                      <p className="mt-1 text-sm font-black text-[var(--brand-red)]">
+                      <p className="type-product line-clamp-2">{product.name}</p>
+                      <p className="type-price mt-1 text-[0.9rem] text-[var(--brand-red)]">
                         {formatCurrency(product.price)}
                       </p>
                     </div>
@@ -786,7 +772,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                           </span>
                         ))}
                       </div>
-                      <span className="text-sm font-black text-neutral-700">{likes}</span>
+                      <span className="type-price text-[0.85rem] text-[var(--text-body)]">{likes}</span>
                     </div>
                   </button>
                 ))}
@@ -796,28 +782,28 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
 
           <footer
             id="ubicacion"
-            className={`mt-8 hidden rounded-[2rem] border p-5 md:block md:mt-12 md:p-6 ${
+            className={`mt-8 hidden rounded-xl border p-5 md:block md:mt-12 md:p-6 ${
               isDark
                 ? "border-white/10 bg-white/5 text-white"
-                : "border-black/8 bg-white text-neutral-800 shadow-[0_8px_30px_rgba(15,23,42,0.06)]"
+                : "border-[#e5e5e5] bg-white text-neutral-800"
             }`}
           >
             <div className="grid gap-6 md:grid-cols-3">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--brand-red)]">
+                <p className="type-kicker">
                   Ubicacion
                 </p>
-                <p className="mt-2 text-lg font-bold">{initialData.settings.restaurantName}</p>
-                <p className="mt-1 text-sm leading-7 text-neutral-500">{initialData.settings.address}</p>
+                <p className="type-display mt-2 text-[1.25rem]">{initialData.settings.restaurantName}</p>
+                <p className="type-muted mt-1">{initialData.settings.address}</p>
               </div>
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--brand-red)]">
+                <p className="type-kicker">
                   Horario
                 </p>
-                <p className="mt-2 text-sm leading-7 text-neutral-500">{initialData.settings.schedule}</p>
+                <p className="type-muted mt-2">{initialData.settings.schedule}</p>
               </div>
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--brand-red)]">
+                <p className="type-kicker">
                   Contacto
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -825,7 +811,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                     href={initialData.settings.whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl bg-brand-gradient px-4 py-2 text-sm font-bold text-white"
+                    className="inline-flex items-center gap-2 rounded-xl bg-brand-gradient px-4 py-2 text-sm font-semibold text-white"
                   >
                     <MessageCircle className="size-4" />
                     WhatsApp
@@ -849,7 +835,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
         </div>
 
         <nav
-          className={`mobile-bottom-nav fixed bottom-0 left-1/2 z-40 flex w-full max-w-[430px] -translate-x-1/2 items-center justify-between border-t px-4 py-3 backdrop-blur-xl md:hidden ${
+          className={`mobile-bottom-nav fixed bottom-0 left-1/2 z-40 flex w-full max-w-[430px] -translate-x-1/2 items-end justify-around border-t px-4 pt-1 pb-[max(0.2rem,env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden ${
             isDark
               ? "border-white/10 bg-black/90"
               : "border-black/10 bg-white/92"
@@ -866,28 +852,18 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
               setGlobalSearchQuery("");
               setActiveCategory("todo-menu");
             }}
-            className="flex flex-col items-center gap-1 text-[0.72rem] font-semibold text-[var(--brand-red)]"
+            className="type-nav flex flex-1 flex-col items-center gap-px py-0 text-[var(--brand-red)]"
           >
-            <Home className="size-5" />
+            <Home className="size-3" strokeWidth={2.2} />
             Inicio
           </button>
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
-            className={`flex flex-col items-center gap-1 text-[0.72rem] font-medium ${isDark ? "text-white/75" : "text-neutral-600"}`}
+            className={`type-nav flex flex-1 flex-col items-center gap-px py-0 ${isDark ? "text-white/75" : "text-neutral-600"}`}
           >
-            <Store className="size-5" />
+            <Store className="size-3" strokeWidth={2.2} />
             Menu
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-            }}
-            className={`flex flex-col items-center gap-1 text-[0.72rem] font-medium ${isDark ? "text-white/75" : "text-neutral-600"}`}
-          >
-            <MapPin className="size-5" />
-            Ubicacion
           </button>
           <button
             type="button"
@@ -901,33 +877,18 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 return next;
               });
             }}
-            className={`flex flex-col items-center gap-1 text-[0.72rem] font-medium ${isDark ? "text-white/75" : "text-neutral-600"}`}
+            className={`type-nav flex flex-1 flex-col items-center gap-px py-0 ${
+              showFavoritesOnly ? "text-[var(--brand-red)]" : isDark ? "text-white/75" : "text-neutral-600"
+            }`}
           >
             <Heart
-              className={`size-5 ${
+              className={`size-3 ${
                 showFavoritesOnly ? "fill-[var(--brand-red)] text-[var(--brand-red)]" : ""
               }`}
+              strokeWidth={2.2}
             />
             Favoritos
           </button>
-          <a
-            href={initialData.settings.whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={`flex flex-col items-center gap-1 text-[0.72rem] font-medium ${isDark ? "text-white/75" : "text-neutral-600"}`}
-          >
-            <MessageCircle className="size-5" />
-            WhatsApp
-          </a>
-          <a
-            href={initialData.settings.deliveryUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={`flex flex-col items-center gap-1 text-[0.72rem] font-medium ${isDark ? "text-white/75" : "text-neutral-600"}`}
-          >
-            <Globe className="size-5" />
-            Web
-          </a>
         </nav>
 
         <div
@@ -1000,10 +961,10 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 <Phone className="size-5" strokeWidth={2} />
               </span>
               <span className="min-w-0">
-                <span className="block text-[0.95rem] font-bold leading-tight text-neutral-900">
+                <span className="type-product block text-[0.95rem] leading-tight text-neutral-900">
                   {formatWhatsAppDisplay(initialData.settings.whatsappUrl)}
                 </span>
-                <span className="mt-0.5 block text-[0.72rem] text-neutral-400">
+                <span className="type-muted mt-0.5 block">
                   Llamanos o escribenos
                 </span>
               </span>
@@ -1072,14 +1033,14 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
         {globalSearchOpen ? (
           <div className="wide-search-dropdown fixed inset-x-0 top-0 z-[65] mx-auto w-full max-w-[430px] px-3 pt-20 md:max-w-[720px] md:pt-28">
             <div
-              className={`rounded-[2rem] border p-4 shadow-2xl ${
+              className={`rounded-xl border p-4 shadow-none ${
                 isDark
                   ? "border-white/10 bg-[#0f0f0f] text-white"
-                  : "border-black/10 bg-white text-neutral-900"
+                  : "border-[#e5e5e5] bg-white text-neutral-900"
               }`}
             >
               <div className="mb-4 flex items-center justify-between">
-                <p className="text-lg font-black uppercase tracking-[0.12em] text-[var(--brand-red)]">
+                <p className="type-section text-[1.35rem] text-[var(--brand-red)]">
                   Buscar platos
                 </p>
                 <button
@@ -1114,35 +1075,35 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                         key={`search-${product.id}`}
                         type="button"
                         onClick={() => openProductFromSearch(product)}
-                        className={`flex w-full items-center gap-3 rounded-[1.4rem] border p-3 text-left ${
+                        className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left ${
                           isDark
                             ? "border-white/10 bg-white/5"
-                            : "border-black/10 bg-neutral-50"
+                            : "border-[#e5e5e5] bg-white"
                         }`}
                       >
                         <img
                           src={product.imageUrl}
                           alt={product.name}
-                          className="h-16 w-16 rounded-[1rem] object-cover"
+                          className="h-16 w-16 rounded-lg object-cover"
                         />
                         <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-black">{product.name}</p>
-                          <p className="mt-1 truncate text-xs text-neutral-500">
+                          <p className="type-product truncate">{product.name}</p>
+                          <p className="type-muted mt-1 truncate">
                             {categoryNameBySlug[product.categorySlug] ?? "Categoria"}
                           </p>
                         </div>
-                        <span className="rounded-full bg-brand-gradient px-3 py-1 text-xs font-black text-white">
+                        <span className="type-price rounded-full bg-brand-gradient px-3 py-1 text-xs text-white">
                           {formatCurrency(product.price)}
                         </span>
                       </button>
                     ))
                   ) : (
-                    <div className="rounded-[1.5rem] border border-dashed border-black/10 px-4 py-7 text-center text-sm text-neutral-500">
+                    <div className="rounded-xl border border-dashed border-black/10 px-4 py-7 text-center text-sm text-neutral-500">
                       No encontramos platos con esa busqueda.
                     </div>
                   )
                 ) : (
-                  <div className="rounded-[1.5rem] border border-dashed border-black/10 px-4 py-7 text-center text-sm text-neutral-500">
+                  <div className="rounded-xl border border-dashed border-black/10 px-4 py-7 text-center text-sm text-neutral-500">
                     Escribe por ejemplo: <strong>pollo</strong>, <strong>chaufa</strong>,{" "}
                     <strong>coca</strong> o incluso una inicial para filtrar mas rapido.
                   </div>
@@ -1155,17 +1116,17 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
         {categoryScreenOpen ? (
           <div
             className={`wide-category-panel fixed inset-x-0 top-0 z-[45] mx-auto flex h-[calc(100dvh-74px)] w-full max-w-[430px] flex-col overflow-hidden md:inset-0 md:h-auto md:max-w-none md:bg-black/45 md:backdrop-blur-sm ${
-              isDark ? "bg-[#111111]" : "bg-[#f7f4ef]"
+              isDark ? "bg-[#111111]" : "bg-white"
             }`}
             onClick={closeCategoryScreen}
           >
             <div
               className={`wide-category-panel-inner flex h-full w-full flex-col overflow-hidden md:mx-auto ${
-                isDark ? "bg-[#111111]" : "bg-[#f7f4ef]"
+                isDark ? "bg-[#111111]" : "bg-white"
               }`}
               onClick={(event) => event.stopPropagation()}
             >
-            <div className="bg-brand-gradient px-4 pb-4 pt-5 text-white shadow-lg md:rounded-t-[2rem]">
+            <div className="bg-brand-gradient px-4 pb-4 pt-5 text-white shadow-lg md:rounded-t-xl">
               <div className="flex items-center justify-between gap-3">
                 <button
                   type="button"
@@ -1176,7 +1137,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                   <ArrowLeft className="size-5" />
                 </button>
 
-                <h2 className="flex-1 text-center text-[1.45rem] font-black uppercase tracking-tight">
+                <h2 className="type-display flex-1 text-center text-[1.4rem] text-white md:text-[1.6rem]">
                   {activeLabel}
                 </h2>
 
@@ -1190,7 +1151,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 </button>
               </div>
 
-              <p className="mt-3 text-center text-sm text-white/80">{activeDescription}</p>
+              <p className="type-muted is-light mt-3 text-center">{activeDescription}</p>
 
               {categorySearchOpen ? (
                 <div className="mt-4">
@@ -1209,13 +1170,13 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
 
             <div className="hide-scrollbar flex-1 overflow-y-auto px-3 pb-6 pt-4">
               <div className="mb-4 flex items-center justify-between">
-                <div className={`text-sm font-black uppercase tracking-[0.18em] ${isDark ? "text-white/75" : "text-neutral-600"}`}>
+                <div className={`type-kicker ${isDark ? "text-white/75" : ""}`}>
                   {showFavoritesOnly ? "Favoritos" : "Platos"}
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowFavoritesOnly((current) => !current)}
-                  className={`rounded-full px-3 py-2 text-xs font-black uppercase tracking-[0.16em] ${
+                  className={`rounded-full px-3 py-2 text-[0.72rem] font-semibold tracking-wide ${
                     showFavoritesOnly
                       ? "bg-[var(--brand-red)] text-white"
                       : isDark
@@ -1243,7 +1204,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
 
               {filteredProducts.length === 0 ? (
                 <div
-                  className={`mt-6 rounded-[1.6rem] border border-dashed px-4 py-8 text-center text-sm ${
+                  className={`mt-6 rounded-xl border border-dashed px-4 py-8 text-center text-sm ${
                     isDark
                       ? "border-white/10 bg-white/5 text-white/65"
                       : "border-black/15 bg-white text-neutral-500"
@@ -1260,17 +1221,17 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
         {selectedProduct ? (
           <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 p-4 md:p-8">
             <div
-              className={`relative w-full max-w-[390px] overflow-hidden rounded-[2rem] shadow-2xl md:max-w-[920px] ${
-                isDark ? "bg-[#111111] text-white" : "bg-white text-neutral-900"
+              className={`relative w-full max-w-[390px] overflow-hidden rounded-xl border md:max-w-[920px] ${
+                isDark ? "border-white/10 bg-[#111111] text-white" : "border-[#e5e5e5] bg-white text-neutral-900"
               }`}
             >
               <div className="bg-brand-gradient px-5 py-5 text-white md:hidden">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.28em] text-white/75">
+                    <p className="type-kicker is-light">
                       {selectedProduct.tag ?? "Especial"}
                     </p>
-                    <h3 className="mt-1 text-[1.8rem] font-black leading-tight">
+                    <h3 className="type-display mt-1 text-[1.65rem] text-white">
                       {selectedProduct.name}
                     </h3>
                   </div>
@@ -1295,10 +1256,10 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 <div className="space-y-5 p-5 md:flex md:flex-col md:justify-center md:p-8">
                   <div className="hidden items-start justify-between md:flex">
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-red)]">
+                      <p className="type-kicker">
                         {selectedProduct.tag ?? "Especial"}
                       </p>
-                      <h3 className="mt-2 text-[2rem] font-black leading-tight">
+                      <h3 className="type-display mt-2 text-[1.85rem]">
                         {selectedProduct.name}
                       </h3>
                     </div>
@@ -1324,7 +1285,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                   </div>
 
                   <p
-                    className={`text-balance text-center text-[1.12rem] leading-8 md:text-left ${isDark ? "text-white/80" : "text-neutral-600"}`}
+                    className={`type-body text-balance text-center md:text-left ${isDark ? "text-white/80" : ""}`}
                   >
                     {selectedProduct.description}
                   </p>
@@ -1336,7 +1297,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                       userReaction={userReactions[selectedProduct.id] ?? null}
                       onReact={handleProductReaction}
                     />
-                    <div className="flex h-16 min-w-[9rem] flex-1 items-center justify-center rounded-2xl bg-brand-gradient px-6 text-[1.65rem] font-black text-white shadow-lg md:text-[2rem]">
+                    <div className="type-price flex h-14 min-w-[8.5rem] flex-1 items-center justify-center rounded-xl bg-brand-gradient px-6 text-[1.35rem] text-white md:h-16 md:text-[1.55rem]">
                       {formatCurrency(selectedProduct.price)}
                     </div>
                   </div>
