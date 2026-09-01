@@ -13,7 +13,6 @@ import {
   Heart,
   HeartHandshake,
   Home,
-  UserCircle,
   MapPin,
   Menu,
   MessageCircle,
@@ -168,6 +167,24 @@ function formatWhatsAppDisplay(url: string) {
   }
 
   return `+${digits}`;
+}
+
+function getWhatsAppDigits(url: string) {
+  const match = url.match(/wa\.me\/(\d+)/i);
+  return match?.[1] ?? "";
+}
+
+function getPhoneCallHref(url: string) {
+  const digits = getWhatsAppDigits(url);
+  return digits ? `tel:+${digits}` : url;
+}
+
+function WhatsAppGlyph({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  );
 }
 
 function HeroCategoryLabel({ name }: { name: string }) {
@@ -360,17 +377,6 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
     setCategorySearchOpen(false);
     setSearch("");
     setShowFavoritesOnly(false);
-  }
-
-  function goHomeFromDrawer() {
-    setDrawerOpen(false);
-    setCategoryScreenOpen(false);
-    setCategorySearchOpen(false);
-    setActiveCategory("todo-menu");
-    setSearch("");
-    setShowFavoritesOnly(false);
-    setGlobalSearchOpen(false);
-    setGlobalSearchQuery("");
   }
 
   function handleProductReaction(productId: string, reaction: ReactionType | null) {
@@ -850,34 +856,28 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
         >
           <div className="menu-drawer-header shrink-0 bg-brand-gradient">
             <div className="flex items-center justify-between gap-3">
-              <div className="flex min-w-0 items-center gap-2.5">
-                <div className="flex size-[3.25rem] shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.22)]">
-                  <BrandLogo
-                    logoUrl={logoUrl}
-                    alt={restaurantName}
-                    className="size-[2.6rem] object-contain"
-                    fallback={
-                      <div className="text-center leading-none">
-                        <div className="menu-drawer-logo-brand">Pollon</div>
-                        <div className="menu-drawer-logo-tagline">Pollo a la brasa</div>
-                      </div>
-                    }
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setDrawerOpen(false);
-                    router.push("/admin");
-                  }}
-                  className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:border-white/50 hover:bg-white/20"
-                  aria-label="Iniciar sesion"
-                  title="Iniciar sesion"
-                >
-                  <UserCircle className="size-5" strokeWidth={1.75} />
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setDrawerOpen(false);
+                  router.push("/admin");
+                }}
+                className="flex size-[3.25rem] shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.22)] transition hover:scale-[1.03]"
+                aria-label="Iniciar sesion de administrador"
+                title="Iniciar sesion"
+              >
+                <BrandLogo
+                  logoUrl={logoUrl}
+                  alt={restaurantName}
+                  className="size-[2.6rem] object-contain"
+                  fallback={
+                    <div className="text-center leading-none">
+                      <div className="menu-drawer-logo-brand">Pollon</div>
+                      <div className="menu-drawer-logo-tagline">Pollo a la brasa</div>
+                    </div>
+                  }
+                />
+              </button>
 
               <button
                 type="button"
@@ -890,39 +890,10 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto bg-white px-5 py-6 hide-scrollbar">
-            <a
-              href={initialData.settings.whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="menu-drawer-phone-card mb-6 flex items-center gap-3"
-            >
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[var(--brand-red)] text-white shadow-sm">
-                <Phone className="size-5" strokeWidth={2} />
-              </span>
-              <span className="min-w-0">
-                <span className="type-product block text-[0.95rem] leading-tight text-neutral-900">
-                  {formatWhatsAppDisplay(initialData.settings.whatsappUrl)}
-                </span>
-                <span className="type-muted mt-0.5 block">
-                  Llamanos o escribenos
-                </span>
-              </span>
-            </a>
-
+          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto bg-white px-5 pb-6 pt-5 hide-scrollbar">
             <p className="menu-drawer-categories-label">Categorias</p>
 
-            <nav className="mt-4 flex w-full flex-col gap-1">
-              <button
-                type="button"
-                onClick={goHomeFromDrawer}
-                className={`menu-drawer-category-item${
-                  !categoryScreenOpen && !showFavoritesOnly ? " is-active" : ""
-                }`}
-              >
-                Inicio
-              </button>
-
+            <nav className="mt-3 flex w-full flex-col gap-0.5">
               <button
                 type="button"
                 onClick={() => openCategory("todo-menu", true)}
@@ -954,17 +925,39 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 })}
             </nav>
 
-            <div className="mt-auto border-t border-neutral-200 pt-5">
+            <div className="mt-auto space-y-1.5 border-t border-neutral-200 pt-4">
               <a
                 href={initialData.settings.deliveryUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="menu-drawer-delivery-link"
+                className="menu-drawer-delivery-link !border-0 !bg-transparent !shadow-none"
               >
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[var(--brand-red)] text-white shadow-sm">
-                  <Globe className="size-5" strokeWidth={2} />
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#1877F2] text-white">
+                  <Globe className="size-4" strokeWidth={2} />
                 </span>
-                <span className="menu-drawer-delivery-title">Delivery</span>
+                <span className="menu-drawer-delivery-title">Pagina web</span>
+              </a>
+
+              <a
+                href={initialData.settings.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="menu-drawer-delivery-link !border-0 !bg-transparent !shadow-none"
+              >
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white">
+                  <WhatsAppGlyph className="size-4" />
+                </span>
+                <span className="menu-drawer-delivery-title">WhatsApp</span>
+              </a>
+
+              <a
+                href={getPhoneCallHref(initialData.settings.whatsappUrl)}
+                className="menu-drawer-delivery-link !border-0 !bg-transparent !shadow-none"
+              >
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-red)] text-white">
+                  <Phone className="size-4" strokeWidth={2} />
+                </span>
+                <span className="menu-drawer-delivery-title">Llamar</span>
               </a>
             </div>
           </div>
