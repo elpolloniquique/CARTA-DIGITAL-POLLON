@@ -685,27 +685,25 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                     }`}
                   >
                     <div className="relative">
+                      <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-center gap-1.5 px-3 pt-3">
+                        <Icon className="size-4 shrink-0 text-[#171717] md:size-5" />
+                        <p className="explore-card-label text-black">
+                          {category.name}
+                        </p>
+                      </div>
                       <img
                         src={currentProduct.imageUrl}
                         alt={currentProduct.name}
                         className="h-[230px] w-full object-cover md:h-[320px] lg:h-[360px]"
                       />
-                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white md:p-5 lg:p-6">
-                        <div className="mb-2 flex items-center gap-2">
-                          <Icon className="size-5 text-white md:size-[1.35rem]" />
-                          <p className="type-kicker is-light">
-                            {category.name}
-                          </p>
-                        </div>
-                        <p className="type-display line-clamp-2 text-[1.25rem] leading-snug text-white md:text-[1.45rem]">
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[22%] bg-gradient-to-t from-black/70 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 z-10 flex items-center gap-2.5 px-3 pb-3 md:px-4 md:pb-4">
+                        <span className="type-price shrink-0 rounded-full bg-white px-3 py-1.5 text-[0.88rem] text-[var(--brand-red)] shadow-sm md:px-4 md:py-1.5 md:text-[0.95rem]">
+                          {formatCurrency(currentProduct.price)}
+                        </span>
+                        <p className="explore-card-title min-w-0 flex-1 line-clamp-2 text-white" style={{ color: "#ffffff" }}>
                           {currentProduct.name}
                         </p>
-                        <div className="mt-3 flex items-center justify-between md:mt-4">
-                          <span className="type-price rounded-full bg-white px-3 py-1 text-[0.88rem] text-[var(--brand-red)] md:px-4 md:py-1.5 md:text-[0.95rem]">
-                            {formatCurrency(currentProduct.price)}
-                          </span>
-                        </div>
                       </div>
                     </div>
                   </button>

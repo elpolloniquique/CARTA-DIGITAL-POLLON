@@ -743,6 +743,33 @@ img {
   letter-spacing: 0.04em;
 }
 
+.explore-card-label,
+.explore-card-title {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.explore-card-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.explore-card-title {
+  font-size: 0.92rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+@media (min-width: 768px) {
+  .explore-card-title {
+    font-size: 1.05rem;
+  }
+}
+
 @media (min-width: 768px) {
   .hero-all-menu-label {
     font-size: 0.84rem;
