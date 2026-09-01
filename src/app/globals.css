@@ -18,6 +18,7 @@
   --text-body: #3f3f46;
   --text-muted: #71717a;
   --pollon-watermark: none;
+  --app-header-height: 3.9rem;
 }
 
 .light-surface {
@@ -165,12 +166,16 @@ img {
   }
 
   .mobile-top-bar {
+    display: flex;
+    align-items: center;
     width: 100%;
+    height: var(--app-header-height);
     margin: 0;
-    padding: 0.8rem 1rem 0.85rem;
+    padding: 0 1rem;
     border-radius: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(12px);
+    box-sizing: border-box;
   }
 
   .mobile-top-bar-light {
@@ -434,7 +439,7 @@ img {
 .menu-drawer {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: transparent;
   box-shadow: 30px 0 70px rgba(0, 0, 0, 0.18);
 }
 
@@ -444,8 +449,21 @@ img {
 }
 
 .menu-drawer-header {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
-  padding: 1rem 1rem 1.125rem;
+  height: var(--app-header-height);
+  padding: 0 0.7rem;
+  background: rgba(0, 0, 0, 0.55);
+  background-image: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.menu-drawer-header > div {
+  width: 100%;
 }
 
 .menu-drawer-logo-brand {
@@ -490,7 +508,9 @@ img {
 }
 
 .menu-drawer-category-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   width: 100%;
   border: none;
   border-radius: 0.65rem;
@@ -547,8 +567,8 @@ img {
 
 @media (min-width: 768px) {
   .menu-drawer {
-    width: min(360px, 34vw);
-    max-width: 360px;
+    width: min(280px, 28vw);
+    max-width: 280px;
   }
 }
 

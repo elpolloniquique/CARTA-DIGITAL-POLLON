@@ -527,7 +527,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
               isDark ? "mobile-top-bar-dark" : "mobile-top-bar-light"
             }`}
           >
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex w-full items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={() => setDrawerOpen(true)}
@@ -850,26 +850,26 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
         />
 
         <aside
-          className={`menu-drawer fixed left-0 top-0 z-[60] flex h-full w-[min(88vw,300px)] max-w-[300px] flex-col bg-white text-neutral-900 transition duration-300 md:w-[min(360px,34vw)] md:max-w-[360px] ${
+          className={`menu-drawer fixed left-0 top-0 z-[60] flex h-full w-[min(78vw,248px)] max-w-[248px] flex-col text-neutral-900 transition duration-300 md:w-[min(280px,28vw)] md:max-w-[280px] ${
             drawerOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="menu-drawer-header shrink-0 bg-brand-gradient">
-            <div className="flex items-center justify-between gap-3">
+          <div className="menu-drawer-header shrink-0">
+            <div className="flex w-full items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={() => {
                   setDrawerOpen(false);
                   router.push("/admin");
                 }}
-                className="flex size-[3.25rem] shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.22)] transition hover:scale-[1.03]"
+                className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm transition hover:scale-[1.03]"
                 aria-label="Iniciar sesion de administrador"
                 title="Iniciar sesion"
               >
                 <BrandLogo
                   logoUrl={logoUrl}
                   alt={restaurantName}
-                  className="size-[2.6rem] object-contain"
+                  className="size-7 object-contain"
                   fallback={
                     <div className="text-center leading-none">
                       <div className="menu-drawer-logo-brand">Pollon</div>
@@ -882,15 +882,15 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:border-white/50 hover:bg-white/20"
+                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:border-white/50 hover:bg-white/20"
                 aria-label="Cerrar menu"
               >
-                <X className="size-5" strokeWidth={2} />
+                <X className="size-4" strokeWidth={2} />
               </button>
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto bg-white px-5 pb-6 pt-5 hide-scrollbar">
+          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto bg-white px-3.5 pb-6 pt-5 hide-scrollbar">
             <p className="menu-drawer-categories-label">Categorias</p>
 
             <nav className="mt-3 flex w-full flex-col gap-0.5">
@@ -903,6 +903,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                     : ""
                 }`}
               >
+                <Home className="size-4 shrink-0" strokeWidth={2.1} />
                 Todo el menu
               </button>
 
@@ -911,6 +912,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                 .map((category) => {
                   const active =
                     categoryScreenOpen && activeCategory === category.slug && !showFavoritesOnly;
+                  const Icon = getCategoryIcon(category.icon);
 
                   return (
                     <button
@@ -919,6 +921,7 @@ export function MobileMenuApp({ initialData }: MobileMenuAppProps) {
                       onClick={() => openCategory(category.slug, true)}
                       className={`menu-drawer-category-item${active ? " is-active" : ""}`}
                     >
+                      <Icon className="size-4 shrink-0" strokeWidth={2.1} />
                       {category.name}
                     </button>
                   );
